@@ -15,6 +15,10 @@
     font-size: 20px;
     line-height: 1.4;
 }
+.carousel-caption {
+    top: 150px;
+    bottom: auto;
+}
 
 /* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
@@ -38,12 +42,16 @@
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
-    .carousel-caption {
+    /*.carousel-caption {
         display: none;
-    }
+    }*/
 
     .carousel-inner{
         width:100%;
         max-height: 200px !important;
+    }
+    .carousel-caption {
+        top: 50px;
+        bottom: auto;
     }
 }

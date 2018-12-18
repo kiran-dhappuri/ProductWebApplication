@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProductWebApplication.Data;
 using ProductWebApplication.Models;
+using ProductWebApplication.Models.Custom;
 
 namespace ProductWebApplication.Controllers
 {
@@ -21,6 +22,12 @@ namespace ProductWebApplication.Controllers
             return View();
         }
 
+        public IActionResult HomeIndex()
+        {
+            var prodcuts = _context.Products.ToList();
+            var model = new HomeIndexViewModel(prodcuts);
+            return View(model);
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Blah blah blah. Blaaah blah blah!";
@@ -32,7 +39,7 @@ namespace ProductWebApplication.Controllers
         {
             ViewData["Message"] = "Your contact page.";
 
-            var prodcuts = _context.Products.ToList();
+            
 
             return View();
         }
