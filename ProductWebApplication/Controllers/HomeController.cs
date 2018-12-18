@@ -58,22 +58,23 @@ namespace ProductWebApplication.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddProduct(Product product)
+        public async Task<IActionResult> AddProduct(Product product, string images)
         {
             if (!ModelState.IsValid)
                 return View(product);
 
-            //ToDO: remove hard coded
-            product.Images = new List<ProductImage>();
-            product.Images.Add(new ProductImage()
+            //TempFix
+            if (!string.IsNullOrWhiteSpace(images))
             {
-                ImageName = "14AFUK-Ot-bqL_CVgRjamn3Cp0NyWaTga"
-            });
-            product.Images.Add(new ProductImage()
-            {
-                ImageName = "1UZw1Ai38C2hQ_RDmIkCF3ogoN_FbLi3q"
-            });
-            // remove above
+                var imageList = images.Split(',');
+                foreach (var image in imageList)
+                {
+                    product.Images.Add(new ProductImage()
+                    {
+                        ImageName = image
+                    });
+                }
+            }
 
             await _dataAccess.CreateProduct(product);
             return View(product);
