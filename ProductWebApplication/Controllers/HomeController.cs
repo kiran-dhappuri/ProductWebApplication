@@ -16,10 +16,12 @@ namespace ProductWebApplication.Controllers
     {
         private readonly WebAppDbContext _context;
         private readonly IDataAccessLayer _dataAccess;
-        public HomeController(WebAppDbContext context, IDataAccessLayer dataAccess)
+        private readonly IFileAccessLayer _fileLayer;
+        public HomeController(WebAppDbContext context, IDataAccessLayer dataAccess, IFileAccessLayer fileLayer)
         {
             _context = context;
             _dataAccess = dataAccess;
+            _fileLayer = fileLayer;
         }
         public IActionResult Index()
         {
@@ -29,7 +31,7 @@ namespace ProductWebApplication.Controllers
         public IActionResult HomeIndex()
         {
             var prodcuts = _context.Products.Include(x => x.Images).ToList();
-            var model = new HomeIndexViewModel(prodcuts);
+            var model = new HomeIndexViewModel(prodcuts, _fileLayer);
             return View(model);
         }
         public IActionResult About()

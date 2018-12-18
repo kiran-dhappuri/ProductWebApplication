@@ -24,8 +24,13 @@
                     itemClass = "item active";
                 }
                 <div class="@itemClass">
+                    
                     @{
                         var imgPath = $"//drive.google.com/uc?id=14AFUK-Ot-bqL_CVgRjamn3Cp0NyWaTga";
+                        if (product.Images.Count > 0)
+                        {
+                            imgPath = product.Images[0].ImageName;
+                        }
                     }
                     <img src=@imgPath alt="ASP.NET" class="img-responsive"/>
                     <div class="carousel-caption" role="option">
