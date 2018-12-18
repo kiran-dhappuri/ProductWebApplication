@@ -28,6 +28,8 @@ namespace ProductWebApplication
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<WebAppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -35,6 +37,8 @@ namespace ProductWebApplication
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+
+
 
             services.AddMvc();
         }
