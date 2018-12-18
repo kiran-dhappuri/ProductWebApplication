@@ -11,6 +11,6 @@ namespace ProductWebApplication.Models.Custom
         public string ProductName { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
-
+        public List<ProductImage> Images { get; set; }
     }
 }

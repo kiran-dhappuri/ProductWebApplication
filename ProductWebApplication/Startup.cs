@@ -37,7 +37,8 @@ namespace ProductWebApplication
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-
+            services.AddScoped<IFileAccessLayer, FileAccessLayer>();
+            services.AddScoped<IDataAccessLayer, DataAccessLayer>();
 
 
             services.AddMvc();
