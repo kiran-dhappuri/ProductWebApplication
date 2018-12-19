@@ -46,7 +46,10 @@
     max-height: 400px !important;
 }
 
-
+.custom-container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

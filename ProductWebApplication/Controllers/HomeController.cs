@@ -37,16 +37,12 @@ namespace ProductWebApplication.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Blah blah blah. Blaaah blah blah!";
-
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            
-
+            ViewData["Message"] = "Contact details:";
             return View();
         }
 
